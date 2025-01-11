@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    width: 800px;
+    margin: auto;
+    padding-top: 40px;
+    flex-direction: column;
+    font-size: 1.05em;
+    font-family: 'Courier New', Courier, monospace;
+    gap: 5px
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 100%;
+    }
+}
+
+#videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 2px;
+}
+
+.video {
+    width: 100%;
+    background-color: #000;
+    pointer-events: none;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    width: fit-content;
+}
