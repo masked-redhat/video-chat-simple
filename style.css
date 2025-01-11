@@ -9,7 +9,7 @@ body {
     display: flex;
     width: 800px;
     margin: auto;
-    padding-top: 40px;
+    padding: 40px 2px 0;
     flex-direction: column;
     font-size: 1.05em;
     font-family: "Rajdhani", serif;
@@ -17,21 +17,16 @@ body {
     padding: var(--secondary-gap);
 }
 
-@media screen and (max-width: 800px) {
-    body {
-        width: 100%;
-    }
-}
-
 #videos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     gap: 10px;
     padding: var(--primary-gap);
 }
 
 .video {
-    width: 100%;
+    width: 48%;
     height: 300px;
     background-color: #000;
     pointer-events: none;
@@ -77,4 +72,16 @@ footer {
 
 .step {
     margin-bottom: var(--secondary-gap);
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        width: 100%;
+    }
+    #videos{
+        flex-direction: column;
+    }
+    .video{
+        width: 100%;
+    }
 }
