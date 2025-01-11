@@ -7,14 +7,8 @@ chatting application
 
 ## WebRTC
 
-It is a technology that lets the connection happen between two peers without
-the need of a server
+WebRTC (Web Real-Time Communication) is a technology that enables peer-to-peer connections between users for real-time communication without the need for an intermediary server for transmitting media or data.
 
-## How does it connect?
+## How does it work?
 
-First, the client that wants to establish a connection, sends an offer - which
-is basically an object that includes ip address, video format and other details -
-and the requested client will generate an answer after getting the offer, both
-clients will have an offer and the answer. Once offer and answer has been set,
-the connection will be established and both can chat, video chat, send file, etc
-without the need of a server
+To establish a connection, the initiating client (the offerer) first sends an "offer" to the other client (the answerer). This offer is a message containing connection information such as IP address, media capabilities (like video format), and other technical details. Upon receiving the offer, the answerer responds with an "answer," which includes its own connection details and preferences. After exchanging the offer and answer, both clients can establish a direct peer-to-peer connection. Once the connection is set up, they can communicate through voice, video, or even send files without the need for a server to relay the data.
