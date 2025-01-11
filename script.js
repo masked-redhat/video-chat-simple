@@ -8,6 +8,7 @@ const answerTextArea = document.getElementById("sdp-answer");
 const createOfferButton = document.getElementById("create-offer");
 const createAnswerButton = document.getElementById("create-answer");
 const addAnswerButton = document.getElementById("add-answer");
+const closeCallButton = document.getElementById("close-call");
 
 // config object of web rtc peer connection
 const servers = {
@@ -101,9 +102,14 @@ const addAnswer = async () => {
     await peerConnection.setRemoteDescription(answer);
 };
 
+const endCall = async () => {
+  peerConnection.close();
+};
+
 // event listeners for buttons
 createOfferButton.addEventListener("click", makeOffer);
 createAnswerButton.addEventListener("click", createAnswer);
 addAnswerButton.addEventListener("click", addAnswer);
+closeCallButton.addEventListener("click", endCall);
 
 init();
