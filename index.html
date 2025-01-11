@@ -8,23 +8,41 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <header>WebRTC learning: Video Chat Application (Manual)</header>
+
     <div id="videos">
       <video class="video" id="user-1" autoplay playsinline></video>
       <video class="video" id="user-2" autoplay playsinline></video>
     </div>
 
-    <div>
+    <div class="step">
+      <p class="instruction">
+        First, Create the offer from your device and copy the generated offer in
+        the offer of other device
+      </p>
       <button id="create-offer">Create Offer</button>
-      <label>Create Offer</label>
+      <label for="sdp-offer">Offer</label>
+      <textarea id="sdp-offer"></textarea>
     </div>
-    <textarea id="sdp-offer"></textarea>
 
-    <div>
+    <div class="step">
+      <p class="instruction">
+        If you have the offer, then create answer from your device and copy the
+        generated answer in the answer of other device
+      </p>
       <button id="create-answer">Create Answer</button>
-      <label>Create Answer</label>
+      <label for="sdp-answer">Answer</label>
+      <textarea id="sdp-answer"></textarea>
     </div>
-    <textarea id="sdp-answer"></textarea>
 
-    <button id="add-answer">Add Answer</button>
+    <div class="step">
+      <p class="instruction">
+        If Offer and answer both have been set, then click on add answer to
+        video chat
+      </p>
+      <button id="add-answer">Add Answer</button>
+    </div>
+
+    <footer>Created By: masked-redhat 2025</footer>
   </body>
 </html>

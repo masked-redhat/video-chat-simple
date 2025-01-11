@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-gap: 4px;
+    --secondary-gap: 6px
+}
+
 body {
     display: flex;
     width: 800px;
@@ -5,8 +12,9 @@ body {
     padding-top: 40px;
     flex-direction: column;
     font-size: 1.05em;
-    font-family: 'Courier New', Courier, monospace;
-    gap: 5px
+    font-family: "Rajdhani", serif;
+    gap: var(--secondary-gap);
+    padding: var(--secondary-gap);
 }
 
 @media screen and (max-width: 800px) {
@@ -18,20 +26,55 @@ body {
 #videos {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    padding: 2px;
+    gap: 10px;
+    padding: var(--primary-gap);
 }
 
 .video {
     width: 100%;
+    height: 300px;
     background-color: #000;
     pointer-events: none;
+    border-radius: 8px;
 }
 
 textarea {
     height: 100px;
+    width: 100%;
+    margin-top: var(--primary-gap);
 }
 
 button {
+    padding: 8px 15px;
+    cursor: pointer;
     width: fit-content;
+}
+
+label {
+    font-size: 1.08em;
+    font-weight: 600;
+}
+
+header,
+footer {
+    font-size: 1.3em;
+    font-weight: 500;
+    text-align: center;
+    margin: 4px auto;
+    background: #c5c5c5;
+    border-radius: 4px;
+    width: 100%;
+    padding: var(--primary-gap);
+}
+
+.instruction {
+    margin: 0 auto var(--primary-gap);
+    background: #dfdfdf;
+    padding: var(--primary-gap);
+    border-radius: 4px;
+    width: 100%;
+}
+
+.step {
+    margin-bottom: var(--secondary-gap);
 }
