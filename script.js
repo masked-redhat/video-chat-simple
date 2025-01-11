@@ -1,16 +1,15 @@
 let localStream, remoteStream, peerConnection;
 
+// elements on the ui
 const user1 = document.getElementById("user-1");
 const user2 = document.getElementById("user-2");
-
 const offerTextArea = document.getElementById("sdp-offer");
 const answerTextArea = document.getElementById("sdp-answer");
-
 const createOfferButton = document.getElementById("create-offer");
 const createAnswerButton = document.getElementById("create-answer");
-
 const addAnswerButton = document.getElementById("add-answer");
 
+// config object of web rtc peer connection
 const servers = {
   iceServers: [
     {
@@ -19,6 +18,7 @@ const servers = {
   ],
 };
 
+// setting the local stream
 const init = async () => {
   localStream = await navigator.mediaDevices.getUserMedia({
     video: true,
@@ -28,9 +28,11 @@ const init = async () => {
   user1.srcObject = localStream;
 };
 
+// creates a peer connection
 const createPeerConnection = (textArea) => {
   peerConnection = new RTCPeerConnection(servers);
 
+  // set remote stream to a new media stream
   remoteStream = new MediaStream();
   user2.srcObject = remoteStream;
 
@@ -38,6 +40,7 @@ const createPeerConnection = (textArea) => {
     peerConnection.addTrack(track, localStream);
   });
 
+  // on track event, remote stream will have tracks
   peerConnection.ontrack = async (event) => {
     event.streams[0].getTracks().forEach((track) => {
       if (!remoteStream.getTracks().includes(track)) {
@@ -46,6 +49,7 @@ const createPeerConnection = (textArea) => {
     });
   };
 
+  // when gathering ice candidates
   peerConnection.onicecandidate = (event) => {
     if (event.candidate) {
       console.log("ICE Candidate:", event.candidate);
@@ -64,6 +68,7 @@ const createPeerConnection = (textArea) => {
   };
 };
 
+// create offer
 const makeOffer = async () => {
   createPeerConnection(offerTextArea);
 
@@ -71,6 +76,7 @@ const makeOffer = async () => {
   await peerConnection.setLocalDescription(offer);
 };
 
+// create answer
 const createAnswer = async () => {
   createPeerConnection(answerTextArea);
 
@@ -84,6 +90,7 @@ const createAnswer = async () => {
   await peerConnection.setLocalDescription(answer);
 };
 
+// add answer
 const addAnswer = async () => {
   let answer = answerTextArea.value;
   if (!answer) return alert("Get the answer from the other device first");
@@ -94,6 +101,7 @@ const addAnswer = async () => {
     await peerConnection.setRemoteDescription(answer);
 };
 
+// event listeners for buttons
 createOfferButton.addEventListener("click", makeOffer);
 createAnswerButton.addEventListener("click", createAnswer);
 addAnswerButton.addEventListener("click", addAnswer);
